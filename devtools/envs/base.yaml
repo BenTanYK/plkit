@@ -16,6 +16,9 @@ dependencies:
   - pre-commit
   - ruff
 
+  - numpy
+  - pandas
+
   - pytest
   - pytest-mock
   - pytest-cov
