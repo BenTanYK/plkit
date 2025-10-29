@@ -8,8 +8,8 @@ TEST_ARGS := -v --cov=$(PACKAGE_NAME) --cov-report=term --cov-report=xml --junit
 .PHONY: env lint format test docs docs-deploy
 
 env:
-	mamba create     --name $(PACKAGE_NAME)
-	mamba env update --name $(PACKAGE_NAME) --file devtools/envs/base.yaml
+	conda create     --name $(PACKAGE_NAME)
+	conda env update --name $(PACKAGE_NAME) --file devtools/envs/base.yaml
 	$(CONDA_ENV_RUN) pip install -e .[all]
 	$(CONDA_ENV_RUN) pre-commit install || true
 
