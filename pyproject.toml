@@ -13,6 +13,7 @@ dependencies = [
     "numpy",
     "pandas",
     "pytest",
+    "openpyxl",
     # Add other dependencies here
 ]
 
