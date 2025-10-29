@@ -179,8 +179,10 @@ def _extract_sizings(df_orders: _pd.DataFrame, idx: int):
     sizings = []
 
     for n_item in ["first", "second", "third", "fourth", "fifth"]:
-        column_name = f"""Sizing for {n_item} kit item
-        (note that for women's tee, XS=size 6, S=size 8, ... , 4XL=20)"""
+        column_name = (
+        f"Sizing for {n_item} kit item (note that "
+        "for women's tee, XS=size 6, S=size 8, ... , 4XL=20)"
+        )
 
         # Check that all sizing columns exist
         if column_name not in df_orders.columns:
