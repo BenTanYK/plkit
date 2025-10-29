@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="0.324" timestamp="2025-10-29T20:11:09.038554+00:00" hostname="saito"><testcase classname="plkit.tests.test_plkit" name="test_plkit" time="0.001" /></testsuite></testsuites>
