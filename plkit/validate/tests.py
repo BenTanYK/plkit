@@ -28,7 +28,7 @@ def _count_initial_order(df_orders: _pd.DataFrame) -> int:
         else:
             raise ValueError(f"Non-string name {name} detected!")
 
-    return item_count
+    return int(item_count)
 
 
 def _count_initial_back_personalisations(df_orders: _pd.DataFrame) -> int:
@@ -53,7 +53,7 @@ def _count_initial_back_personalisations(df_orders: _pd.DataFrame) -> int:
         else:
             raise ValueError(f"Non-string name {name} detected!")
 
-    return item_count
+    return int(item_count)
 
 
 def _count_initial_sleeve_personalisations(df_orders: _pd.DataFrame) -> int:
@@ -77,7 +77,7 @@ def _count_initial_sleeve_personalisations(df_orders: _pd.DataFrame) -> int:
         else:
             raise ValueError(f"Non-string name {name} detected!")
 
-    return item_count
+    return int(item_count)
 
 
 def _count_processed_order(df_products: _pd.DataFrame) -> int:
@@ -93,7 +93,7 @@ def _count_processed_order(df_products: _pd.DataFrame) -> int:
         products = [product for product in products if isinstance(product, str)]
 
     # Sum over all size cells that contain item counts
-    return df_products.iloc[0 : len(products), 3:-2].sum(axis=1)
+    return int(df_products.iloc[0 : len(products), 3:-2].sum(axis=1))
 
 
 def _count_processed_back_personalisations(df_personal: _pd.DataFrame) -> int:
@@ -138,8 +138,8 @@ def assert_order_count(df_orders: _pd.DataFrame, df_products: _pd.DataFrame) -> 
     -------
     None
     """
-    initial_count = _count_initial_order(df_orders)
-    processed_count = _count_processed_order(df_products)
+    initial_count = int(_count_initial_order(df_orders))
+    processed_count = int(_count_processed_order(df_products))
 
     assert initial_count == processed_count
 
