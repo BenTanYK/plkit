@@ -8,7 +8,19 @@ from typing import List as _List
 
 import numpy as _np
 import pandas as _pd
+import unicodedata as _unicodedata
+import re as _re
 
+def _clean_string(s):
+    """Internal function to clean and normalise a string imported from excel."""
+    if isinstance(s, str):
+        # Remove spacing characters
+        s = s.replace('\xa0', ' ')
+        # Remove other common invisible characters
+        s = _re.sub(r'[\u200B-\u200D\uFEFF\u00AD]', '', s)
+        # Normalize and strip whitespace
+        s = _unicodedata.normalize('NFKC', s).strip()
+    return s
 
 
 def extract_orders(filename: str = "responses.xlsx") -> _pd.DataFrame:
@@ -38,6 +50,25 @@ def extract_orders(filename: str = "responses.xlsx") -> _pd.DataFrame:
         raise _pd.errors.EmptyDataError(f"The file {filename} is empty") from e
     except Exception as e:
         raise Exception(f"An error occurred: {e}") from e
+
+    # Clean hidden characters
+    df_orders['Name'] = df_orders['Name'].apply(_clean_string)
+    df_orders['Email'] = df_orders['Email'].apply(_clean_string)
+
+    for number in ['First', 'Second', 'Third', 'Fourth', 'Fifth']:
+        column_name = f'{number} kit item'
+        df_orders[column_name] = df_orders[column_name].apply(_clean_string)
+        column_name = f'{number} item - name personalisation for back (optional)'
+        df_orders[column_name] = df_orders[column_name].apply(_clean_string)
+        column_name = (f'{number} item - personalisation for initials (optional, '
+        'max two letters)')
+        df_orders[column_name] = df_orders[column_name].apply(_clean_string)
+
+    for number in ['first', 'second', 'third', 'fourth', 'fifth']:
+        column_name = (f"Sizing for {number} kit item (note that for women's tee, "
+        "XS=size 6, S=size 8, ... , 4XL=20)"
+        )
+        df_orders[column_name] = df_orders[column_name].apply(_clean_string)
 
     return df_orders
 
@@ -127,10 +158,10 @@ class Order:
                     products[n] = item
 
                 if n_personal == 1:
-                    products[n] = item + "- 1 Personalisation"
+                    products[n] = item + " - 1 Personalisation"
 
                 if n_personal == 2:
-                    products[n] = item + "- 2 Personalisations"
+                    products[n] = item + " - 2 Personalisations"
 
         # Replace 'Green' with 'Forest'
         products = [
