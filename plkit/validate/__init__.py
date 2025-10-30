@@ -4,7 +4,7 @@ from .tests import count_initial_sleeve_personalisations
 
 from .tests import count_processed_order
 from .tests import count_processed_back_personalisations
-from.tests import count_processed_sleeve_personalisations
+from .tests import count_processed_sleeve_personalisations
 
 from .tests import assert_order_count
 from .tests import assert_back_personalisations

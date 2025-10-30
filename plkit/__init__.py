@@ -10,7 +10,13 @@ from .generate_order_form import (
 from .validate import (
     assert_order_count,
     assert_back_personalisations,
-    assert_sleeve_personalisations
+    assert_sleeve_personalisations,
+    count_initial_order,
+    count_initial_back_personalisations,
+    count_initial_sleeve_personalisations,
+    count_processed_order,
+    count_processed_back_personalisations,
+    count_processed_sleeve_personalisations
 )
 
 try:
@@ -26,5 +32,11 @@ __all__ = [
     "generate_product_personalisations",
     "assert_order_count",
     "assert_back_personalisations",
-    "assert_sleeve_personalisations"
+    "assert_sleeve_personalisations",
+    "count_initial_order",
+    "count_initial_back_personalisations",
+    "count_initial_sleeve_personalisations",
+    "count_processed_order",
+    "count_processed_back_personalisations",
+    "count_processed_sleeve_personalisations",
 ]
