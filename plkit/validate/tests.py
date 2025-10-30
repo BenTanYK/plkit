@@ -93,8 +93,9 @@ def _count_processed_order(df_products: _pd.DataFrame) -> int:
         products = [product for product in products if isinstance(product, str)]
 
     # Sum over all size cells that contain item counts
-    return int(df_products.iloc[0 : len(products), 3:-2].sum(axis=1))
+    sum = df_products.iloc[0 : len(products), 3:-2].sum(axis=1)
 
+    return int(sum.sum())
 
 def _count_processed_back_personalisations(df_personal: _pd.DataFrame) -> int:
     """Internal function to count the total number of requested back
