@@ -178,8 +178,9 @@ class Order:
                             product.replace(f"({colour})", "").strip() + f" ({colour})"
                         )
 
+        # Clean up double spacing in product name
         self.products = [
-            product.strip() if isinstance(product, str) else product
+            product.replace("  ", " ").strip() if isinstance(product, str) else product
             for product in products
         ]
 
