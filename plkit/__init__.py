@@ -7,6 +7,11 @@ from .generate_order_form import (
     generate_product_order,
     generate_product_personalisations
 )
+from .validate import (
+    assert_order_count,
+    assert_back_personalisations,
+    assert_sleeve_personalisations
+)
 
 try:
     __version__ = importlib.metadata.version("plkit")
@@ -19,4 +24,7 @@ __all__ = [
     "extract_orders",
     "generate_product_order",
     "generate_product_personalisations",
+    "assert_order_count",
+    "assert_back_personalisations",
+    "assert_sleeve_personalisations"
 ]
