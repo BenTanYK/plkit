@@ -5,10 +5,10 @@ import pandas as _pd
 from ..read_orders import read_order
 
 
-def _count_initial_order(df_orders: _pd.DataFrame) -> int:
+def count_initial_order(df_orders: _pd.DataFrame) -> int:
     """Internal function to count the total number of orders
-    Some code is repeated in _count_initial_back_personalisations
-    and _count_initial_sleeve_personalisations but cba to change it"""
+    Some code is repeated in count_initial_back_personalisations
+    and count_initial_sleeve_personalisations but cba to change it"""
     item_count = 0
 
     # Check that names column exists
@@ -31,7 +31,7 @@ def _count_initial_order(df_orders: _pd.DataFrame) -> int:
     return int(item_count)
 
 
-def _count_initial_back_personalisations(df_orders: _pd.DataFrame) -> int:
+def count_initial_back_personalisations(df_orders: _pd.DataFrame) -> int:
     """Internal function to count the total
     number of back name personalisations"""
     item_count = 0
@@ -56,7 +56,7 @@ def _count_initial_back_personalisations(df_orders: _pd.DataFrame) -> int:
     return int(item_count)
 
 
-def _count_initial_sleeve_personalisations(df_orders: _pd.DataFrame) -> int:
+def count_initial_sleeve_personalisations(df_orders: _pd.DataFrame) -> int:
     """Internal function to count the total number of orders"""
     item_count = 0
 
@@ -80,7 +80,7 @@ def _count_initial_sleeve_personalisations(df_orders: _pd.DataFrame) -> int:
     return int(item_count)
 
 
-def _count_processed_order(df_products: _pd.DataFrame) -> int:
+def count_processed_order(df_products: _pd.DataFrame) -> int:
     """Internal function to count the total number of items in a
     processed order form - could make this a bit simpler actually"""
 
@@ -97,7 +97,7 @@ def _count_processed_order(df_products: _pd.DataFrame) -> int:
 
     return int(sum.sum())
 
-def _count_processed_back_personalisations(df_personal: _pd.DataFrame) -> int:
+def count_processed_back_personalisations(df_personal: _pd.DataFrame) -> int:
     """Internal function to count the total number of requested back
     name personalisations"""
 
@@ -108,7 +108,7 @@ def _count_processed_back_personalisations(df_personal: _pd.DataFrame) -> int:
     return len(back_names)
 
 
-def _count_processed_sleeve_personalisations(df_personal: _pd.DataFrame) -> int:
+def count_processed_sleeve_personalisations(df_personal: _pd.DataFrame) -> int:
     """Internal function to count the total number of requested back
     name personalisations"""
 
@@ -139,8 +139,8 @@ def assert_order_count(df_orders: _pd.DataFrame, df_products: _pd.DataFrame) -> 
     -------
     None
     """
-    initial_count = int(_count_initial_order(df_orders))
-    processed_count = int(_count_processed_order(df_products))
+    initial_count = int(count_initial_order(df_orders))
+    processed_count = int(count_processed_order(df_products))
 
     assert initial_count == processed_count
 
@@ -165,8 +165,8 @@ def assert_back_personalisations(
     -------
     None
     """
-    initial_count = _count_initial_back_personalisations(df_orders)
-    processed_count = _count_processed_back_personalisations(df_personal)
+    initial_count = count_initial_back_personalisations(df_orders)
+    processed_count = count_processed_back_personalisations(df_personal)
 
     assert initial_count == processed_count
 
@@ -191,7 +191,7 @@ def assert_sleeve_personalisations(
     -------
     None
     """
-    initial_count = _count_initial_sleeve_personalisations(df_orders)
-    processed_count = _count_processed_sleeve_personalisations(df_personal)
+    initial_count = count_initial_sleeve_personalisations(df_orders)
+    processed_count = count_processed_sleeve_personalisations(df_personal)
 
     assert initial_count == processed_count
