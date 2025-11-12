@@ -26,24 +26,36 @@ class Product:
 
         # Internal dictionary to store the pricing of individual items
         self.pricing = {
-            "Unisex EcoLayer Hoodie": 32.0,  # pounds
-            "Unisex EcoLayer Hoodie - 1 Personalisation": 35.5,
-            "Unisex EcoLayer Hoodie - 2 Personalisations": 39.00,
-            "Unisex Shield Performance Sweatshirt": 30.0,
-            "Unisex Shield Performance Sweatshirt - 1 Personalisation": 33.5,
-            "Unisex Shield Performance Sweatshirt - 2 Personalisations": 37.0,
-            "Men's EcoLayer Tee (Navy)": 15.5,
-            "Men's EcoLayer Tee - 1 Personalisation (Navy)": 19.0,
-            "Men's EcoLayer Tee - 2 Personalisations (Navy)": 22.5,
-            "Men's EcoLayer Tee (Forest)": 15.5,
-            "Men's EcoLayer Tee - 1 Personalisation (Forest)": 19.0,
-            "Men's EcoLayer Tee - 2 Personalisations (Forest)": 22.5,
-            "Women's EcoLayer Tee (Navy)": 15.5,
-            "Women's EcoLayer Tee - 1 Personalisation (Navy)": 19.0,
-            "Women's EcoLayer Tee - 2 Personalisations (Navy)": 22.5,
-            "Women's EcoLayer Tee (Forest)": 15.5,
-            "Women's EcoLayer Tee - 1 Personalisation (Forest)": 19.0,
-            "Women's EcoLayer Tee - 2 Personalisations (Forest)": 22.5,
+            "Unisex EcoLayer Hoodie": 38.40,  # pounds
+            "Unisex EcoLayer Hoodie - 1 Personalisation": 42.60,
+            "Unisex EcoLayer Hoodie - 2 Personalisations": 46.80,
+            "Unisex Shield Performance Sweatshirt": 36.0,
+            "Unisex Shield Performance Sweatshirt - 1 Personalisation": 40.20,
+            "Unisex Shield Performance Sweatshirt - 2 Personalisations": 44.40,
+            "Men's EcoLayer Tee (Navy)": 18.60,
+            "Men's EcoLayer Tee - 1 Personalisation (Navy)": 22.80,
+            "Men's EcoLayer Tee - 2 Personalisations (Navy)": 27.0,
+            "Men's EcoLayer Tee (Forest)": 18.60,
+            "Men's EcoLayer Tee - 1 Personalisation (Forest)": 22.80,
+            "Men's EcoLayer Tee - 2 Personalisations (Forest)": 27.0,
+            "Women's EcoLayer Tee (Navy)": 18.60,
+            "Women's EcoLayer Tee - 1 Personalisation (Navy)": 22.80,
+            "Women's EcoLayer Tee - 2 Personalisations (Navy)": 27.0,
+            "Women's EcoLayer Tee (Forest)": 18.60,
+            "Women's EcoLayer Tee - 1 Personalisation (Forest)": 22.80,
+            "Women's EcoLayer Tee - 2 Personalisations (Forest)": 27.0,
+            "Men's Sublimated Tee (Navy)": 25.62,
+            "Men's Sublimated Tee - 1 Personalisation (Navy)": 25.62,
+            "Men's Sublimated Tee - 2 Personalisations (Navy)": 25.62,
+            "Men's Sublimated Tee (Forest)": 25.62,
+            "Men's Sublimated Tee - 1 Personalisation (Forest)": 25.62,
+            "Men's Sublimated Tee - 2 Personalisations (Forest)": 25.62,
+            "Women's Sublimated Tee (Navy)": 25.62,
+            "Women's Sublimated Tee - 1 Personalisation (Navy)": 25.62,
+            "Women's Sublimated Tee - 2 Personalisations (Navy)": 25.62,
+            "Women's Sublimated Tee (Forest)": 25.62,
+            "Women's Sublimated Tee - 1 Personalisation (Forest)": 25.62,
+            "Women's Sublimated Tee - 2 Personalisations (Forest)": 25.62
         }
 
         if name not in self.pricing:
@@ -192,6 +204,18 @@ def generate_product_order(df_orders: _pd.DataFrame) -> _pd.DataFrame:
         "Women's EcoLayer Tee (Forest)",
         "Women's EcoLayer Tee - 1 Personalisation (Forest)",
         "Women's EcoLayer Tee - 2 Personalisations (Forest)",
+        "Men's Sublimated Tee (Navy)",
+        "Men's Sublimated Tee - 1 Personalisation (Navy)",
+        "Men's Sublimated Tee - 2 Personalisations (Navy)",
+        "Men's Sublimated Tee (Forest)",
+        "Men's Sublimated Tee - 1 Personalisation (Forest)",
+        "Men's Sublimated Tee - 2 Personalisations (Forest)",
+        "Women's Sublimated Tee (Navy)",
+        "Women's Sublimated Tee - 1 Personalisation (Navy)",
+        "Women's Sublimated Tee - 2 Personalisations (Navy)",
+        "Women's Sublimated Tee (Forest)",
+        "Women's Sublimated Tee - 1 Personalisation (Forest)",
+        "Women's Sublimated Tee - 2 Personalisations (Forest)"
     ]
 
     # Names of all people who submitted an order
