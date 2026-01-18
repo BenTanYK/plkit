@@ -233,6 +233,7 @@ class Order:
             if product in pricing_info.keys():
                 price += pricing_info[product]
 
+        self.price = price
 
 
 def _extract_items(df_orders: _pd.DataFrame, idx: int):
