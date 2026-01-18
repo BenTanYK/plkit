@@ -116,6 +116,7 @@ class Order:
         self.products = [
             _np.nan
         ] * 5  # Product information is empty, extract with function identify_products()
+        self.price = _np.nan # Price is initially empty, calculate from products
 
         if not (len(items) == len(sizings) == len(back_names) == len(sleeve_names)):
             raise ValueError("Mismatch in items input!")
@@ -183,6 +184,55 @@ class Order:
             product.replace("  ", " ").strip() if isinstance(product, str) else product
             for product in products
         ]
+
+    def update_pricing(self) -> None:
+        """
+        Calculate the total price of a single person's
+        order
+        """
+        # unit pricing including VAT
+        pricing_info = {
+                    "Unisex EcoLayer Hoodie": 38.40,  # pounds
+                    "Unisex EcoLayer Hoodie - 1 Personalisation": 42.60,
+                    "Unisex EcoLayer Hoodie - 2 Personalisations": 46.80,
+                    "Unisex Shield Performance Sweatshirt": 36.0,
+                    "Unisex Shield Performance Sweatshirt - 1 Personalisation": 40.20,
+                    "Unisex Shield Performance Sweatshirt - 2 Personalisations": 44.40,
+                    "Men's EcoLayer Tee (Navy)": 18.60,
+                    "Men's EcoLayer Tee - 1 Personalisation (Navy)": 22.80,
+                    "Men's EcoLayer Tee - 2 Personalisations (Navy)": 27.0,
+                    "Men's EcoLayer Tee (Forest)": 18.60,
+                    "Men's EcoLayer Tee - 1 Personalisation (Forest)": 22.80,
+                    "Men's EcoLayer Tee - 2 Personalisations (Forest)": 27.0,
+                    "Women's EcoLayer Tee (Navy)": 18.60,
+                    "Women's EcoLayer Tee - 1 Personalisation (Navy)": 22.80,
+                    "Women's EcoLayer Tee - 2 Personalisations (Navy)": 27.0,
+                    "Women's EcoLayer Tee (Forest)": 18.60,
+                    "Women's EcoLayer Tee - 1 Personalisation (Forest)": 22.80,
+                    "Women's EcoLayer Tee - 2 Personalisations (Forest)": 27.0,
+                    "Men's Sublimated Tee (Navy)": 25.62,
+                    "Men's Sublimated Tee - 1 Personalisation (Navy)": 25.62,
+                    "Men's Sublimated Tee - 2 Personalisations (Navy)": 25.62,
+                    "Men's Sublimated Tee (Forest)": 25.62,
+                    "Men's Sublimated Tee - 1 Personalisation (Forest)": 25.62,
+                    "Men's Sublimated Tee - 2 Personalisations (Forest)": 25.62,
+                    "Women's Sublimated Tee (Navy)": 25.62,
+                    "Women's Sublimated Tee - 1 Personalisation (Navy)": 25.62,
+                    "Women's Sublimated Tee - 2 Personalisations (Navy)": 25.62,
+                    "Women's Sublimated Tee (Forest)": 25.62,
+                    "Women's Sublimated Tee - 1 Personalisation (Forest)": 25.62,
+                    "Women's Sublimated Tee - 2 Personalisations (Forest)": 25.62
+                }
+
+        price = 0
+
+        # Update the product names
+        self.identify_products()
+
+        for product in self.products:
+            if product in pricing_info.keys():
+                price += pricing_info[product]
+
 
 
 def _extract_items(df_orders: _pd.DataFrame, idx: int):
